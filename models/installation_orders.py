@@ -67,7 +67,7 @@ class xx_car_installation_order_mst(models.Model):
                                     raise ValidationError( "يجب تحديد عمولة الفني في تفاصيل منطقة الخدمة (%s)" % line.car_part_id.name)
 
                 for line in rec.lines_packages:
-                     if not line.car_part_id.car_category_part_flag:
+                    if not line.car_part_id.car_category_part_flag:
                         if not line.car_part_commission:
                              raise ValidationError( "يجب تحديد عمولة الفني على منطقة الخدمة في الباقة (%s)" % line.car_part_id.name)
                    
