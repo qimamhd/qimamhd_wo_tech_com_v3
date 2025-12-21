@@ -1,3 +1,4 @@
+
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>    
@@ -6,110 +7,26 @@
             <field name="model">wo.installation.order.mst</field>
             <field name="inherit_id" ref="qimamhd_wo_v3.wo_installation_order_view" />
             <field name="arch" type="xml">
-                <xpath expr = "//field[@name = 'sale_man_id']" position="after">
-                                <field name="edit_saleman_priv"  invisible="1"/>
 
+                    <xpath expr = "//field[@name = 'partner_id']">
 
-                 </xpath>
-            
-                    <xpath expr = "//field[@name = 'sale_man_id']" position="replace">
-                        <field name="sale_man_id"  attrs="{'invisible': [('sale_man_required_flag','=', False),('sale_man_invisible','=', True)],'required': [('sale_man_required_flag','=', True)],'readonly':[('edit_saleman_priv', '=', False)]}" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" />
-
+                        <field name="enter_technical_commission_manual" invisible="1"/>
                     </xpath>
 
-
-                    <xpath expr = "//field[@name = 'lines_services']" position="replace">
-                        <field name="lines_services"  nolabel="1">
-                            <tree editable="bottom">
-                                <button name="open_services_detail" string="تفاصيل" type="object"   icon="fa-cogs"  width="0.1"
-                                        groups="qimamhd_wo_v3.group_sales_man_priv"
-                                     
-                                    options="{&quot;warn&quot;: true}"/>
-
-                                <field name="edit_technial_priv"  invisible="1"/>
-                                <field name="l_is_read_only_price"  invisible="1"/>
-                                <field name="l_is_read_only_size"  invisible="1"/>
-                                <field name="car_part_flag" invisible="1" />
-                                    <field name="film_category_price_ids" invisible="1"/>
-                                <field name="car_part_price_ids" invisible="1"/>
-                                <field name="discount_in_services" invisible="1"/>
-                                <field name="branch_id_assign" invisible="1"/>
-                                <field name="readonly_car_film_product_id" invisible="1"/>
-                                <field name="is_effected_in_inventory" invisible="1"/>
-                                <field name="additional_options_ids" invisible="1"/>
-                                <field name="part_options_required" invisible="1"/>
-                                
-
-                                    <field name="service_type" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"   attrs="{'readonly': ['|','|',('parent.sale_order_id','!=', False ), ('parent.is_user_sale_man', '=', False),('parent.state','in',['cancel_order','confirm','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                
-                                
-                                <field name="car_part_id"   options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'readonly': ['|','|',('parent.sale_order_id','!=', False ), ('parent.is_user_sale_man', '=', False),('parent.state','in',['cancel_order','confirm','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                
-                                <field name="film_category_id"  options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'readonly': ['|','|',('parent.sale_order_id','!=', False ), ('parent.is_user_sale_man', '=', False),('parent.state','in',['cancel_order','confirm','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                
-                                <field name="car_film_product_id"  options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" attrs="{'invisible':[('car_part_flag','=', False)],'readonly': ['|','|','|','|',('parent.sale_order_id','!=', False ), ('parent.is_user_sale_man', '=', False),('readonly_car_film_product_id','=', True),('car_part_flag','=', False), ('parent.state','in',['cancel_order','confirm','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                <field name="part_options_ids" optional="hide" widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'required':[('part_options_required','=', True)],'readonly': ['|','|',('parent.sale_order_id','!=', False ), ('parent.is_user_sale_man', '=', False),('parent.state','in',['cancel_order','confirm','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                
-
-                                <field name="length_qty" force_save="1"  optional="hide"  attrs="{'invisible': [('parent.service_qty_length_weight','=', False)],'readonly':['|','|','|','|','|',('is_effected_in_inventory','=',False),('car_part_flag','=', False),('parent.sale_order_id','!=', False ), ('parent.is_sale_man_technical', '=', False) ,('l_is_read_only_size', '=', True) ,('parent.state','in',['draft','cancel_order','execute_request','execute_started','execute_completed','complete_work','sale_order'])]}"/>
-                                <field name="width_qty" force_save="1"  optional="hide"  attrs="{'invisible': [ ('parent.service_qty_length_weight','=', False)],'readonly':['|','|','|','|','|',('is_effected_in_inventory','=',False),('car_part_flag','=', False),('parent.sale_order_id','!=', False ), ('parent.is_sale_man_technical', '=', False) ,('l_is_read_only_size', '=', True) ,('parent.state','in',['draft','cancel_order','execute_request','execute_started','execute_completed','complete_work','sale_order'])]}"/>
-                            
-                                <field name="qty" force_save="1"  optional="hide"  attrs="{'readonly':['|','|','|','|','|',('is_effected_in_inventory','=',False),('car_part_flag','=', False),('parent.sale_order_id','!=', False), ('parent.is_sale_man_technical', '=', False) ,('l_is_read_only_size', '=', True) ,('parent.state','in',['draft','cancel_order','execute_request','execute_started','execute_completed','complete_work','sale_order'])]}"/>
-                                    <field name="limpid_product_ids" invisible="1"/>
-                                <field name="limpid_film_product_id"  optional="hide"  options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}" attrs="{'invisible':[('car_part_flag','=', False)],'readonly': ['|','|','|',('is_effected_in_inventory','=',False),('car_part_flag','=', False),('parent.sale_order_id','!=', False ), ('parent.state','in',['draft','cancel_order','execute_request','execute_completed','complete_work','sale_order'])]}" />
-                                <field name="worning_msg"  optional="hide"/>
-                                <field name="service_price"  force_save="1" attrs="{'readonly':['|', '|','|',('parent.sale_order_id','!=', False ), ('l_is_read_only_price','=', True)  ,('parent.is_user_sale_man', '=', False),('parent.state','in',['confirm','execute_request','execute_started','execute_completed','complete_work'])]}"/>
                         
-                                <field name="tax_ids" optional="hide" force_save="1" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
+                    <xpath expr = "//field[@name = 'lines_services']/tree/field[@name = 'car_part_commission']" position="attributes">
+                     
+                        <attribute name="attrs">{'invisible':[('car_part_flag','=', False)],'readonly':['|','|','|',('parent.enter_technical_commission_manual','=', False),('car_part_flag','=', False),('parent.is_sale_man_technical', '=', False) , ('parent.state','in',['cancel_order','execute_completed','complete_work'])]}</attribute>
 
-                                <field name="discount_type" optional="hide"   force_save="1" attrs="{'readonly':['|','|','|','|',('parent.sale_order_id','!=', False ), ('discount_in_services','=', False),('parent.discount_setting_flag','in',['final_total','in_service_details']),('parent.is_user_sale_man', '=', False),('parent.state','in',['confirm','execute_request','execute_started','execute_completed','complete_work'])]}"/>
-                                <field name="discount" optional="hide"  force_save="1"  attrs="{'readonly':['|', '|','|','|',('parent.sale_order_id','!=', False ), ('discount_in_services','=', False),('parent.discount_setting_flag','in',['final_total','in_service_details']),('parent.is_user_sale_man', '=', False),('parent.state','in',['confirm','execute_request','execute_started','execute_completed','complete_work'])]}"/>
-                                    
-                                <field name="discount_total"   optional="hide"  sum="الاجمالي"/>
-                                <field name="services_price_after_discount"  optional="hide"   sum="الاجمالي"/>
-                                <field name="total_before_tax"   optional="hide" sum="الاجمالي قبل الضريبة" readonly="1"/>
-                                <field name="services_price_with_tax"   sum="الاجمالي"/>
-                                <field name="technical_name" optional="hide"  widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'readonly':[('edit_technial_priv','=', False)]}"  />
-                                <field name="car_part_commission"  optional="hide"  readonly="1" force_save="1"/>
-
-                                <field name="header_id" invisible="1"/> 
-                                
-                            </tree>
-                        </field>
                     </xpath>
 
-                    <xpath expr = "//field[@name = 'lines_packages']" position="replace">
-                        <field name="lines_packages"  attrs="{'readonly':['|', ('dis_allowed_add_services_to_package','=', True),('is_user_sale_man', '=', False)]}" nolabel="1" >
-                            <tree editable="bottom" delete="0" create="0"  >
-                                <button name="open_services_detail" string="تفاصيل" type="object"   icon="fa-cogs"  width="0.1"
-                                        groups="qimamhd_wo_v3.group_sales_man_priv"
-                                       
-                                    options="{&quot;warn&quot;: true}" />
-                                
-                                <field name="service_detail_check"   invisible="1"/>
-                                <field name="edit_technial_priv"   invisible="1"/>
-                                <field name="service_type_flag" invisible="1"/>
-                                <field name="selected" readonly="1"  />
+                    <xpath expr = "//field[@name = 'lines_packages']/tree/field[@name = 'technical_name']" position="after">
+                     
+                        <field name="car_part_commission" optional="hide" attrs="{'invisible':[('car_part_flag','=', False)],'readonly':['|','|','|',('parent.enter_technical_commission_manual','=', False),('car_part_flag','=', False),('parent.is_sale_man_technical', '=', False) , ('parent.state','in',['cancel_order','execute_completed','complete_work'])]}"  />
 
-                                <field name="service_type" readonly="1" optional="hide"   options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
-                                <field name="car_part_id" readonly="1"   options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
-
-                                <field name="film_category_id"  readonly="1"  options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
-                                
-                                <field name="car_part_line_id" readonly="1"  optional="hide"   options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"/>
-                                <field name="branch_id_assign" invisible="1"/>
-                                <field name="car_part_flag" invisible="1" />
-                                <!-- <field name="technical_name" optional="hide"  widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'readonly':['|','|',('car_part_flag','=', False),('parent.is_sale_man_technical', '=', False) , ('parent.state','in',['cancel_order','execute_completed','complete_work'])]}"  /> -->
-                                <field name="technical_name" optional="hide"  widget="many2many_tags" options="{'no_quick_create':True,'no_create_edit':True,'no_open': True,'no_create': True}"  attrs="{'readonly':[('edit_technial_priv','=', False)]}"  />
-
-
-                                <field name="tax_ids"  readonly="1" optional="hide"/>
-                                <field name="header_id" invisible="1"/>
-                            </tree>
-                        </field>
                     </xpath>
-                   
-                      
+
+               
             </field>
         </record>
     </data>
