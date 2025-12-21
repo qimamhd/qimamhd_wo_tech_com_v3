@@ -23,7 +23,7 @@
         # 'security/ir.model.access.csv',
         'security/security.xml',
         'views/installation_order_view.xml',
-         # 'views/account_payment.xml',
+        'views/installation_order_s_lines_view.xml',
 	#'wizards/recap.xml',
     ],
     # only loaded in demonstration mode

@@ -2,8 +2,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>    
-        <record id="wo_edit_technical_view" model="ir.ui.view">
-            <field name="name">wo_edit_technical_view</field>
+        <record id="wo_technical_comm_manual_view" model="ir.ui.view">
+            <field name="name">wo_technical_comm_manual_view</field>
             <field name="model">wo.installation.order.mst</field>
             <field name="inherit_id" ref="qimamhd_wo_v3.wo_installation_order_view" />
             <field name="arch" type="xml">
