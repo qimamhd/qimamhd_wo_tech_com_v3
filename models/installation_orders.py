@@ -4,6 +4,26 @@ from odoo import api, models, fields, exceptions,_
 from odoo.exceptions import ValidationError
 from datetime import datetime
 
+class xx_car_services_lines(models.Model):
+    _inherit = 'wo.services.header.lines'
+
+        enter_technical_commission_manual = fields.Boolean(default=lambda self: self._default_enter_technical_commission_manual(),
+                                              compute="_get_enter_technical_commission_manual")
+
+    # @api.depends('company_id')
+    def _get_enter_technical_commission_manual(self):
+
+       
+        for rec in self:
+            rec.enter_technical_commission_manual = self.user_has_groups('qimamhd_wo_tech_com_v3.group_allow_add_technical_commission')
+
+    def _default_enter_technical_commission_manual(self):
+
+       
+        return  self.user_has_groups('qimamhd_wo_tech_com_v3.group_allow_add_technical_commission')
+  
+    # *******************************************************************************************************
+
 class xx_car_installation_order_packages_lines(models.Model):
     _inherit = 'wo.insl.order.packages.lines'
 
