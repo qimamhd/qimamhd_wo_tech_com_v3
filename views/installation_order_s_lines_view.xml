@@ -9,7 +9,8 @@
                     
 
                      <xpath expr = "//field[@name = 'service_header_lines_id']/tree/field[@name = 'car_part_commission']" position="attributes">
-                            <attribute name="attrs">{'invisible':[('car_part_flag','=', False)],'readonly':['|','|','|',('parent.enter_technical_commission_manual','=', False),('car_part_flag','=', False),('parent.is_sale_man_technical', '=', False) , ('parent.state','in',['cancel_order','execute_completed','complete_work'])]}</attribute>
+                            <attribute name="attrs">{'readonly':['|','|','|',('parent.enter_technical_commission_manual','=', False),('cart_part_selected', '=', False),('parent.is_sale_man_technical', '=', False) , ('parent.state','in',['cancel_order','execute_completed','complete_work'])]}</attribute>
+               
 
                     </xpath>
 
