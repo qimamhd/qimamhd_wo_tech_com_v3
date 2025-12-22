@@ -22,6 +22,8 @@
     'data': [
         # 'security/ir.model.access.csv',
         'security/security.xml',
+        'views/res_config.xml',
+
         'views/installation_order_view.xml',
         'views/installation_order_s_lines_view.xml',
 	#'wizards/recap.xml',
