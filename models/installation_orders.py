@@ -286,31 +286,16 @@ class xx_car_installation_order_mst(models.Model):
                                 })
 
   
-    def checking_complete_work(self):
-        res = super().checking_complete_work()
+    # def checking_complete_work(self):
+    #     res = super().checking_complete_work()
 
-        for rec in self:
-           
-            delete_commissions = self.env['wo.installation.technician.com.line'].search(
-                [('header_id', '=', rec.id)]).unlink()
-
-            if rec.technical_commission_rqeuired:
-                rec.check_technical_commission()
-                rec.calc_manulal_technician_commission()
-                if rec.technical_commission_calc_flag == 'wo_completed':
-              
-                    rec.lines_commission.write({'invoice_date': rec.compelete_done_date if rec.compelete_done_date else rec.order_date,
-                                             'state': 'posted'})
-
-
-        return res
-    
-    # def calculation_technician_commission(self):
-
-    #     res = super().calculation_technician_commission()
     #     for rec in self:
+           
+           
+
     #         if rec.technical_commission_rqeuired:
     #             rec.check_technical_commission()
+    #             delete_commissions = self.env['wo.installation.technician.com.line'].search([('header_id', '=', rec.id)]).unlink()
     #             rec.calc_manulal_technician_commission()
     #             if rec.technical_commission_calc_flag == 'wo_completed':
               
@@ -319,5 +304,24 @@ class xx_car_installation_order_mst(models.Model):
 
 
     #     return res
+    
+    def calculation_technician_commission(self):
+
+        res = super().calculation_technician_commission()
+        for rec in self:
+         
+
+            if rec.technical_commission_rqeuired:
+
+                rec.check_technical_commission()
+                delete_commissions = self.env['wo.installation.technician.com.line'].search([('header_id', '=', rec.id)]).unlink()
+                rec.calc_manulal_technician_commission()
+                if rec.technical_commission_calc_flag == 'wo_completed':
+              
+                    rec.lines_commission.write({'invoice_date': rec.compelete_done_date if rec.compelete_done_date else rec.order_date,
+                                             'state': 'posted'})
+
+
+        return res
 
 
