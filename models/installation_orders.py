@@ -7,7 +7,7 @@ from datetime import datetime
 class xx_car_services_lines(models.Model):
     _inherit = 'wo.services.header.lines'
 
-        enter_technical_commission_manual = fields.Boolean(default=lambda self: self._default_enter_technical_commission_manual(),
+    enter_technical_commission_manual = fields.Boolean(default=lambda self: self._default_enter_technical_commission_manual(),
                                               compute="_get_enter_technical_commission_manual")
 
     # @api.depends('company_id')
