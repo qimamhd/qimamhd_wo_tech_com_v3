@@ -290,6 +290,10 @@ class xx_car_installation_order_mst(models.Model):
         res = super().checking_complete_work()
 
         for rec in self:
+           
+            delete_commissions = self.env['wo.installation.technician.com.line'].search(
+                [('header_id', '=', rec.id)]).unlink()
+
             if rec.technical_commission_rqeuired:
                 rec.check_technical_commission()
                 rec.calc_manulal_technician_commission()
