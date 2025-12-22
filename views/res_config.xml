@@ -7,18 +7,21 @@
             <field name="priority" eval="70"/>
             <field name="inherit_id" ref="qimamhd_wo_v3.films_res_config_settings_view_form" />
             <field name="arch" type="xml">
-                <xpath expr="//div[name ='work_order']" position="inside" >
-                    
-<!-- 	                   technical_commission_required 	 -->
-                        <div class="col-12 col-lg-6 o_setting_box">
-                                <div class="o_setting_left_pane">
-                                    <field name="technician_commission_required"/>
-                                </div>
-                                <div class="o_setting_right_pane">
-                                    <label for="technician_commission_required"/>
-                                    <div class="text-muted">ادخال عمولات الفنيين في نظام افلام السيارات اجباري</div>
-                                </div>
-                         </div>
+                <xpath expr="//div[@class='app_settings_block' and @data-key='qimamhd_wo_v3']//div[@name='work_order']"
+                       position="inside">
+
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="technician_commission_required"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="technician_commission_required"/>
+                            <div class="text-muted">
+                                ادخال عمولات الفنيين في نظام افلام السيارات اجباري
+                            </div>
+                        </div>
+                    </div>
+
                 </xpath>
             </field>
         </record>
