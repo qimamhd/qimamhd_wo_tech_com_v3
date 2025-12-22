@@ -9,7 +9,7 @@
 
                     <xpath expr = "//field[@name = 'partner_id']"  position="after">
 
-                        <field name="enter_technical_commission_manual" invisible="1"/>
+                        <field name="enter_technical_commission_manual" />
                     </xpath>
                 
                     <xpath expr = "//field[@name = 'lines_services']/tree/field[@name = 'technical_name']" position="after">
