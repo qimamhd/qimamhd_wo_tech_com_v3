@@ -5,6 +5,12 @@ from odoo.exceptions import ValidationError
 from datetime import datetime
 
 class xx_car_services_lines(models.Model):
+    _inherit = 'wo.car.parts.com.lines'
+  
+
+    part_commission_rqeuired = fields.Boolean(string="العمولة اجباري ")
+
+class xx_car_services_lines(models.Model):
     _inherit = 'wo.services.header.lines'
 
     enter_technical_commission_manual = fields.Boolean(default=lambda self: self._default_enter_technical_commission_manual(),

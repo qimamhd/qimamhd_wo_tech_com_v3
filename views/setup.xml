@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>    
+        <record id="car_com_parts_view_v3_view" model="ir.ui.view">
+            <field name="name">car_com_parts_view_v3_view</field>
+            <field name="model">wo.car.parts</field>
+            <field name="inherit_id" ref="qimamhd_wo_v3.car_parts_view_v3" />
+            <field name="arch" type="xml">
+                    
+                <xpath expr = "//field[@name = 'part_com_lines']/tree/field[@name = 'commission']" position="after">
+                     <field name="part_commission_rqeuired" />
+
+                </xpath>
+                <xpath expr = "//field[@name = 'part_com_lines']/tree/field[@name = 'commission']" position="attributes">
+                    <attribute name="attrs">{'required':[('part_commission_rqeuired','=', True)]}</attribute>
+                </xpath>
+ 
+                   
+            </field>
+        </record>
+    </data>
+</odoo> 
